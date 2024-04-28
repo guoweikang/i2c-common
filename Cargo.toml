@@ -1,0 +1,13 @@
+[package]
+name = "i2c_common"
+version = "0.1.0"
+edition = "2021"
+authors = ["Guoweikang <guoweikang.kernel@gmail.com>"]
+description = ""
+license = "GPL-3.0-or-later OR Apache-2.0"
+homepage = ""
+repository = "https://github.com/guoweikang/i2c-common.git"
+
+[dependencies]
+derive_builder = {version ="0.20", default-features = false}
+bitflags = "2.5.0"
