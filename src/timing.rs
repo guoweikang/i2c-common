@@ -1,6 +1,24 @@
 //! I2C Time configuration
+use core::fmt;
 
-use super::I2cSpeedMode;
+/// i2c Speed mode
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+pub enum I2cSpeedMode {
+    /// Standard Speed Mode.
+    StandMode = 0,
+    /// Fast Speed Mode.
+    FastMode,
+    /// Fast Plus Mode.
+    FastPlusMode,
+    /// TURBO Mode.
+    TurboMode,
+    /// High Speed.
+    HighSpeedMode,
+    /// ULTRA_FAST.
+    UltraFastMode,
+    /// Unknown.
+    UnknownMode,
+}
 
 /// I2C standard mode max bus frequency in hz
 pub const I2C_MAX_STANDARD_MODE_FREQ: u32 = 100000;
@@ -14,6 +32,27 @@ pub const I2C_MAX_TURBO_MODE_FREQ: u32 = 1400000;
 pub const I2C_MAX_HIGH_SPEED_MODE_FREQ: u32 = 3400000;
 /// I2C ultra fast mode max bus frequency in hz
 pub const I2C_MAX_ULTRA_FAST_MODE_FREQ: u32 = 5000000;
+
+impl I2cSpeedMode {
+    /// From a u32 bus_freq_hz to SpeedMode
+    pub fn from_bus_freq(bus_freq: u32) -> Self {
+        match bus_freq {
+            I2C_MAX_STANDARD_MODE_FREQ => I2cSpeedMode::StandMode,
+            I2C_MAX_FAST_MODE_FREQ => I2cSpeedMode::FastMode,
+            I2C_MAX_FAST_MODE_PLUS_FREQ => I2cSpeedMode::FastPlusMode,
+            I2C_MAX_TURBO_MODE_FREQ => I2cSpeedMode::TurboMode,
+            I2C_MAX_HIGH_SPEED_MODE_FREQ => I2cSpeedMode::HighSpeedMode,
+            I2C_MAX_ULTRA_FAST_MODE_FREQ => I2cSpeedMode::UltraFastMode,
+            _ => I2cSpeedMode::UnknownMode,
+        }
+    }
+}
+
+impl fmt::Display for I2cSpeedMode {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+           write!(f, "{:?}",self)
+    }
+}
 
 /// I2C timing config for all i2c driver
 ///
@@ -82,6 +121,7 @@ impl I2cTiming {
                     .bus_freq_hz(I2C_MAX_ULTRA_FAST_MODE_FREQ)
                     .scl_rise_ns(120)
                     .scl_fall_ns(120),
+                _=> panic!("unknown mode"),
             };
         }
         builder
@@ -103,5 +143,11 @@ impl I2cTiming {
     #[inline]
     pub fn get_scl_fall_ns(&self) -> u32 {
         self.scl_fall_ns
+    }
+
+    /// get sda hold time
+    #[inline]
+    pub fn get_sda_hold_ns(&self) -> u32 {
+        self.sda_hold_ns
     }
 }

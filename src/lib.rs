@@ -10,6 +10,7 @@
 extern crate derive_builder;
 
 /// i2c operation mode
+#[derive(Debug)]
 pub enum I2cMode {
     /// Master Mode.      
     ///
@@ -21,27 +22,14 @@ pub enum I2cMode {
     Slave = 1,
 }
 
-/// i2c Speed mode
-pub enum I2cSpeedMode {
-    /// Standard Speed Mode.
-    StandMode = 0,
-    /// Fast Speed Mode.
-    FastMode,
-    /// Fast Plus Mode.
-    FastPlusMode,
-    /// TURBO Mode.
-    TurboMode,
-    /// High Speed.
-    HighSpeedMode,
-    /// ULTRA_FAST.
-    UltraFastMode,
-}
 
 /// i2c timing
 mod timing;
 /// i2c func
 mod functionality;
+/// i2c msg
+pub mod msg;
 
 pub use crate::{
-    timing::*,functionality::*,
+    timing::*,functionality::*
 };
