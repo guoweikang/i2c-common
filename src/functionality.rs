@@ -22,27 +22,27 @@ bitflags! {
          const NOSTART               = 0x00000010;
          /// Support Slave
          const SLAVE                 = 0x00000020;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_BLOCK_PROC_CALL = 0x00008000; /* SMBus 2.0 or later */
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_QUICK           = 0x00010000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_READ_BYTE       = 0x00020000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_WRITE_BYTE      = 0x00040000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_READ_BYTE_DATA  = 0x00080000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_WRITE_BYTE_DATA = 0x00100000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_READ_WORD_DATA  = 0x00200000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_WRITE_WORD_DATA = 0x00400000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_PROC_CALL       = 0x00800000;
-         /// required for I2C_M_RECV_LEN  
+         /// required for I2C_M_RECV_LEN
          const SMBUS_READ_BLOCK_DATA = 0x01000000;
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_WRITE_BLOCK_DATA = 0x02000000;
          /// I2C-like block xfer
          const SMBUS_READ_I2C_BLOCK  = 0x04000000;
@@ -53,16 +53,15 @@ bitflags! {
 
          // Multi-bit flags
 
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_BYTE =  Self::SMBUS_READ_BYTE.bits() | Self::SMBUS_WRITE_BYTE.bits();
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_BYTE_DATA =  Self::SMBUS_READ_BYTE_DATA.bits() | Self::SMBUS_WRITE_BYTE_DATA.bits();
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_WORD_DATA = Self::SMBUS_READ_WORD_DATA.bits()| Self::SMBUS_WRITE_WORD_DATA.bits();
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_BLOCK_DATA = Self::SMBUS_READ_BLOCK_DATA.bits() | Self::SMBUS_WRITE_BLOCK_DATA.bits();
-         /// Fill Doc 
+         /// Fill Doc
          const SMBUS_I2C_BLOCK = Self::SMBUS_READ_I2C_BLOCK.bits() | Self::SMBUS_WRITE_I2C_BLOCK.bits();
     }
 }
-

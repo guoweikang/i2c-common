@@ -50,7 +50,7 @@ impl I2cSpeedMode {
 
 impl fmt::Display for I2cSpeedMode {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-           write!(f, "{:?}",self)
+        write!(f, "{:?}", self)
     }
 }
 
@@ -121,7 +121,7 @@ impl I2cTiming {
                     .bus_freq_hz(I2C_MAX_ULTRA_FAST_MODE_FREQ)
                     .scl_rise_ns(120)
                     .scl_fall_ns(120),
-                _=> panic!("unknown mode"),
+                _ => panic!("unknown mode"),
             };
         }
         builder

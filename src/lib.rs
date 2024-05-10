@@ -22,14 +22,11 @@ pub enum I2cMode {
     Slave = 1,
 }
 
-
-/// i2c timing
-mod timing;
 /// i2c func
 mod functionality;
 /// i2c msg
 pub mod msg;
+/// i2c timing
+mod timing;
 
-pub use crate::{
-    timing::*,functionality::*
-};
+pub use crate::{functionality::*, timing::*};
