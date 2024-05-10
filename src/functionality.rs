@@ -1,4 +1,4 @@
-//! To determine what functionality is present
+//! To determine i2c what functionality is present
 //!
 //! From linux/include/uapi/linux/i2c.h
 
@@ -8,7 +8,7 @@ bitflags! {
     /// To determine what I2C functionality is present
     #[allow(non_camel_case_types)]
     #[repr(transparent)]
-    #[derive(Debug, PartialEq, Eq)]
+    #[derive(Debug, Copy, Clone, PartialEq, Eq)]
     pub struct I2cFuncFlags: u32 {
          /// Support I2C
          const I2C                   = 0x00000001;
