@@ -3,6 +3,8 @@
 //! Compatible with different hardware platforms
 //! Include:
 //! timing: I2C timing config
+//! functionality: Describe I2c functionality, Compatible with Linux
+//! msg: Describe I2cMsg
 
 #![no_std]
 
@@ -28,5 +30,8 @@ mod functionality;
 pub mod msg;
 /// i2c timing
 mod timing;
+
+/// As specified in SMBus standard 
+pub const  I2C_SMBUS_BLOCK_MAX: u8 = 32;
 
 pub use crate::{functionality::*, timing::*};
