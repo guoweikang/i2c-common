@@ -8,6 +8,8 @@
 
 #![no_std]
 
+const __LOG_PREFIX: &[u8] = b"i2c-common\0";
+
 #[macro_use]
 extern crate derive_builder;
 

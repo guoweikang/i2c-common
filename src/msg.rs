@@ -117,10 +117,10 @@ impl I2cMsg {
     }
 
     /// Check whether the buffer pointer has left last one
-    pub  fn left_last(&self) -> bool {
+    pub  fn read_left_last(&self) -> bool {
         // MasterRead means msg can be write
         if self.flags.contains(I2cMsgFlags::I2cMasterRead) {
-            self.write_idx as usize == self.buf_len - 1
+            self.read_cmd_cnt as usize == self.buf_len -1
         } else {
             self.read_idx as usize == self.buf_len - 1
         }
